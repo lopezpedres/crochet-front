@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Cart } from './Cart'
 
-export const NavBar = ({ show, setShow }) => {
+export const NavBar = () => {
+  const [show, setShow] = useState(false)
   const toggleButton = () => {
 
     setShow(!show)
@@ -23,7 +24,7 @@ export const NavBar = ({ show, setShow }) => {
   }
   return (
     <nav className=' md:flex  p-4 py-11 md:px-20 '>
-      <div className='fixed bg-body top-0 left-0 right-0 grid grid-cols-3 p-4  '>
+      <div className='md:static fixed bg-white top-0 left-0 right-0 grid grid-cols-3 p-4  '>
         <div className='md:hidden col-span-2'>
           <button onClick={ () => toggleButton() } type="button">
             <img src="./burguer.svg" />
