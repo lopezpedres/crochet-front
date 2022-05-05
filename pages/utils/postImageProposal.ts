@@ -6,7 +6,7 @@ type Proposal = {
   comments: string;
   url?: string;
 };
-
+//Todo: Have to add the types for the file 
 export const postImageProposal = async (file: any) => {
   const storage = getStorage();
   const storageRef = ref(storage, "images/"+file.name);

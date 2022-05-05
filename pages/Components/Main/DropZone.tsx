@@ -38,17 +38,25 @@ function Previews({ files, setFiles }) {
   }, [files]);
 
   return (
-    <section className=" mx-auto my-4 border-2 border-dotted border-black   h-auto lg:w-96 w-80 rounded-lg">
-      <div {...getRootProps({ className: "dropzone" })}>
-        <input {...getInputProps()} />
-
-        <div className="p-4">
-          <img className="mx-auto" src="./upload.svg" />
-          <p className="text-center w-auto ">Selecciona una imagen</p>
+    <>
+      <section className=" bg-white  appearance-none border-2 border-dashed border-gray-700  rounded w-full py-2 px-3 h-32 text-gray-700  focus:outline-none focus:shadow-outline mb-4 ">
+        <div {...getRootProps({ className: "dropzone" })}>
+          <input {...getInputProps()} />
         </div>
-      </div>
-      <aside className=" rounded-lg w-1/4 m-auto ">{thumbs}</aside>
-    </section>
+        {files.length === 0 && (
+          <div className=" p-4">
+            <img className="mx-auto" src="./upload.svg" />
+            <p className="text-center w-auto ">
+              Haz click para seleccionar una imagen
+            </p>
+          </div>
+        )}
+        <div className=" w-10 h-10 m-auto ">
+          <aside className=" my-4 border">{thumbs}</aside>
+        </div>
+         {(files.length>0) && <p className=" my-4 text-xs">Haz click para seleccionar una imagen differente</p>}
+      </section>
+    </>
   );
 }
 

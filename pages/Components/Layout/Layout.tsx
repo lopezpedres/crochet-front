@@ -1,4 +1,5 @@
 import React from 'react'
+import { Footer } from '../Footer/Footer'
 import { NavBar } from '../NavBar/NavBar'
 
 const Layout = ({children}) => {
@@ -6,6 +7,7 @@ const Layout = ({children}) => {
     <div className='relative'>
         <NavBar/>
         {children}
+        <Footer/>
     </div>
   )
 }
