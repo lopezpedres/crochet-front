@@ -2,18 +2,18 @@ import React from "react";
 
 const Newsletter = () => {
   return (
-    <form className="block w-full max-w-xs mx-auto ">
+    <form className="block w-full max-w-xs mx-auto my-4">
       <div className="pb-4">
-        <p>Newsletter</p>
+        <p className="text-lg">Newsletter</p>
       </div>
-      <div className="flex items-center border-b border-gray-700 py-2">
+      <div className="flex items-center border-b border-gray-700 py-2 mb-4">
         <input
           className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
           type="text"
           placeholder="Correo Electronico"
         />
         <button
-          className="flex-shrink-0 border-2 rounded-md shadow-xl border-gray-700 bg-secondary hover:bg-gray-800 hover:text-white py-1 px-2"
+          className="flex-shrink-0 border-2 text-sm rounded-md shadow-xl border-gray-700 bg-secondary hover:bg-gray-800 hover:text-white py-1 px-2"
           type="button"
         >
           Enviar
