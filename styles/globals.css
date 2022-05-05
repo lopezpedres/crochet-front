@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities{
-    .grid-custom{
-        grid-template-columns: repeat(3, minmax(0, max-content));
+@layer{
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #000 !important;
     }
 }
