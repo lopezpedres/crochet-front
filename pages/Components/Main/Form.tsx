@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import MyDropzone from "./DropZone";
-import {postImageProposal} from "../../utils/postImageProposal";
-import {postProposal} from "../../utils/postProposal";
+import { postImageProposal } from "../../utils/postImageProposal";
+import { postProposal } from "../../utils/postProposal";
 type Inputs = {
   name: string;
   email: string;
@@ -11,7 +11,7 @@ type Inputs = {
 export default function Form() {
   const [files, setFiles] = useState([]);
   const {
-    register, 
+    register,
     handleSubmit,
     watch,
     formState: { errors },
@@ -19,18 +19,17 @@ export default function Form() {
   } = useForm();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const urlImage= await postImageProposal(files[0]);
-    const newProposal =  await postProposal({...data, url: urlImage})
-    console.log(newProposal)
+    const urlImage = await postImageProposal(files[0]);
+    const newProposal = await postProposal({ ...data, url: urlImage });
+    console.log(newProposal);
     reset();
   };
   // console.log(watch("name")); // watch input value by passing the name of it
 
-
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <div className=" container justify-items-center mx-auto grid grid-cols-1 md:grid-cols-5">
-      <div className=" md:col-span-3 md:justify-items-start container mx-auto  p-10 ">
+    <div className=" container justify-items-center mx-auto grid grid-cols-1 md:grid-cols-2">
+      <div className="  md:justify-items-start container mx-auto  p-10 ">
         <p className="  lg:text-5xl text-4xl text-center  ">
           Hacemos en crochet tus sueños!
         </p>
@@ -38,43 +37,62 @@ export default function Form() {
           Si tienes alguna idea de lo que quieres hacer, mándanos tu diseño
         </p>
       </div>
-      <form
-        className="container justify-items-center md:justify-items-start py-10 my-auto  text-lg grid grid-cols-1"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <p className="  lg:text-5xl text-4xl text-center  ">
-          Hacemos en crochet tus sueños!
-        </p>
-        <input
-          className="lg:w-96 w-80 border-b border-black  text-black  pt-5 px-2 leading-tight focus:outline-none"
-          placeholder="Nombre"
-          {...register("name", { required: true })}
-        />
-        {errors.nombre && <span>No olvides esta parte</span>}
-        <input
-          className="lg:w-96 w-80 border-b border-black   text-black  pt-5  px-2 leading-tight focus:outline-none"
-          placeholder="Correo"
-          {...register("email", { required: true })}
-        />
-        {errors.email && <span>No olvides esta parte</span>}
-        <div className="lg:w-96 w-80 grid grid-cols-1  pt-5">
-          <textarea
-            className=" border rounded-lg border-black   h-36  text-black  pt-2  px-2 leading-tight focus:outline-none"
-            placeholder="Comentarios"
-            {...register("comments", { required: true })}
-          />
-          {errors.email && (
-            <span className="text-center">No olvides esta parte</span>
-          )}
-        </div>
-        <MyDropzone files={files} setFiles={setFiles} />
-        <button
-          className=" h-10 w-96 border-2 rounded-md border-black bg-secondary"
-          type="submit"
+      <div className="w-full max-w-sm">
+        <form
+          className="bg-secondary shadow-2xl rounded px-8 pt-6 pb-8 mb-4"
+          onSubmit={handleSubmit(onSubmit)}
         >
-          Enviar
-        </button>
-      </form>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Nombre
+              <input
+                className=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+                placeholder="Nombre"
+                {...register("name", { required: true })}
+              />
+            </label>
+            {errors.name && (
+              <p className="text-black text-xs italic">No olvides esta parte</p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Correo
+              <input
+                className=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Correo"
+                {...register("email", { required: true })}
+              />
+            </label>
+            {errors.email && (
+              <p className="text-black text-xs italic">No olvides esta parte</p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Comentarios
+              <textarea
+                className="shadow appearance-none border rounded w-full py-2 px-3 h-32 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+                placeholder="Comentarios"
+                {...register("comments", { required: true })}
+              />
+            </label>
+            {errors.email && (
+              <p className="text-black text-xs italic">No olvides esta parte</p>
+            )}
+          </div>
+          <label className="block cursor-pointer text-gray-700 text-sm font-bold mb-">
+            Imagenes
+          <MyDropzone files={files} setFiles={setFiles} />
+          </label>
+          <button
+            className=" block h-10 w-32 mx-auto border-2 rounded-md shadow-xl border-gray-700 bg-secondary hover:bg-gray-800 hover:text-white"
+            type="submit"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
