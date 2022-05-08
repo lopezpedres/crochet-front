@@ -28,7 +28,7 @@ export default function Form() {
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <div className=" container justify-items-center mx-auto grid grid-cols-1 md:grid-cols-2">
+    <div className=" container justify-items-center mx-auto grid grid-cols-1 md:grid-cols-2 my-11 md:mt-28">
       <div className="  md:justify-items-start container mx-auto  p-10 ">
         <p className="  lg:text-5xl text-4xl text-center  ">
           Hacemos en crochet tus sueños!

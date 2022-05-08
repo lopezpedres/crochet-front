@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useState } from 'react'
 import { Cart } from './Cart'
 
@@ -10,12 +11,16 @@ export const NavBar = () => {
   const Options = () => {
     return (
       < >
-        <a href='#'>
-          Nosotros
+         <Link href='/'>
+        <a >
+        Home
         </a>
-        <a href='#'>
-          Catalogo
+        </Link>
+        <Link href='/product'>
+        <a >
+        Catálogo
         </a>
+        </Link>
         <a href='#'>
           Contacto
         </a>
