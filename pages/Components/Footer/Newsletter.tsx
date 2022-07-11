@@ -2,7 +2,7 @@ import React from "react";
 
 const Newsletter = () => {
   return (
-    <form className="block w-full max-w-xs mx-auto my-4">
+    <form className="block w-full max-w-xs mx-auto my-4 pr-4">
       <div className="pb-4">
         <p className="text-lg">Newsletter</p>
       </div>
