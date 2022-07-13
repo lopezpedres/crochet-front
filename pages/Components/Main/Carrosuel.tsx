@@ -43,6 +43,7 @@ export default function Carrosuel() {
                 { images.map((img, i) => (
                     <SwiperSlide key={ img + i } className="w-full h-full m-2 " >
                         <div className=" hover:-translate-y-2 group container ">
+                            {/* //TODO Add Link Tag */}
                             <a href="/hola" className="cursor-pointer">
                                 <img key={ img } className={ `shadow-md  object-center rounded-3xl object-cover h-full w-full  ` } src={ `./images/${img}` } />
                             </a>

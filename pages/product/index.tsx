@@ -10,57 +10,8 @@ import { Grid, Pagination } from "swiper";
 import { GridOptions } from "swiper/types";
 
 import { storeFront } from "../utils/storeFront";
-
-//allProduct types
-
-export interface allProducts {
-  products: Products;
-}
-
-export interface Products {
-  edges?: (EdgesEntity)[] | null;
-}
-export interface EdgesEntity {
-  node: Node;
-}
-export interface Node {
-  title: string;
-  priceRange: PriceRange;
-  images: Images;
-}
-export interface PriceRange {
-  minVariantPrice: MinVariantPrice;
-}
-export interface MinVariantPrice {
-  amount: string;
-}
-export interface Images {
-  edges?: (EdgesEntity1)[] | null;
-}
-export interface EdgesEntity1 {
-  node: Node1;
-}
-export interface Node1 {
-  url: string;
-  altText?: null;
-}
-export interface Extensions {
-  cost: Cost;
-}
-export interface Cost {
-  requestedQueryCost: number;
-  actualQueryCost: number;
-  throttleStatus: ThrottleStatus;
-}
-export interface ThrottleStatus {
-  maximumAvailable: number;
-  currentlyAvailable: number;
-  restoreRate: number;
-}
-
-
-
-
+import type { Products } from "../types/Products/Products";
+import type { allProducts } from "../Components/Product/types/ProductTypes";
 
 const index = ({products}:{products:Products}) => {
   console.log(products);
@@ -75,7 +26,7 @@ const index = ({products}:{products:Products}) => {
       <div className="container  mb-10 mx-auto ">
         <Swiper
           breakpoints={{
-            // when window width is >= 576px
+            // when window width is >= 200px
             200: {
               slidesPerView: 2,
               spaceBetween: 16,
@@ -105,11 +56,6 @@ const index = ({products}:{products:Products}) => {
               <ProductItem product={product.node} />
             </SwiperSlide> 
           ))}
-          {/* <div>
-            <SwiperSlide>
-              <ProductItem product={product} />
-            </SwiperSlide>
-          </div> */}
         </Swiper>
       </div>
     </>
@@ -126,6 +72,7 @@ const query = gql`
       edges {
         node {
           title
+          handle
           priceRange{
             minVariantPrice{
               amount

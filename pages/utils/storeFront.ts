@@ -1,10 +1,6 @@
 import fetch from "isomorphic-fetch"
-export async function storeFront(query:string, variables?:any) {
+export async function storeFront(query:string, variables:{[key:string]:string|string[]}={}) {
     try{
-        console.log(process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN);
-        console.log(process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESSTOKEN);
-        
-        
         const response = await  fetch(
             process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN,
             {
