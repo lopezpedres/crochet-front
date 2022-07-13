@@ -29,8 +29,8 @@ const ProductPage = ({
         className="mb-5"
       >
         {productByHandle?.images.edges.map((image) => (
-          <div className="max-w-xs">
-            <SwiperSlide className="max-full" key={image.node.url}>
+          <div key={image.node.url} className="max-w-xs">
+            <SwiperSlide className="max-full" >
               <img
                 className="mx-auto mb-5"
                 src={image.node.url}
