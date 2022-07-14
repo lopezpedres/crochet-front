@@ -32,7 +32,7 @@ export const NavBar = () => {
       <div className='md:static fixed z-10  bg-white top-0 left-0 right-0 grid grid-cols-3 p-4  '>
         <div className='md:hidden z-10 col-span-2'>
           <button onClick={ () => toggleButton() } type="button">
-            <img src="./burguer.svg" />
+            <img src="/burguer.svg" />
           </button>
           {/* // Here I want the enter the logo*/ }
         </div>
@@ -51,7 +51,7 @@ export const NavBar = () => {
       <div className='container hidden md:flex  justify-evenly items-center mx-auto'>
         <Options />
         <a href='#'>
-          <img src="./cart.svg" />
+          <img src="/cart.svg" />
         </a>
 
       </div>
