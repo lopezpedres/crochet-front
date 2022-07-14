@@ -8,7 +8,7 @@ const ProductItem = ({ product }: { product: Node }) => {
   const title = product.title;
   const price = product.priceRange.minVariantPrice.amount;
   return (
-    <div className="container md:max-w-sm max-w-xs   mx-auto mb-5  hover:-translate-y-2">
+    <div className="container md:max-w-sm max-w-xs p-4  mx-auto mb-5  hover:-translate-y-2">
       <Link href={`/product/${product.handle}`}>
         <a>
           <img
@@ -24,7 +24,7 @@ const ProductItem = ({ product }: { product: Node }) => {
       </div>
       <div className="text-right">
         <span className="text-gray-700 text-md md:text-xl font-bold m-4 ">
-          $ {price}MXN
+          $ {price} MXN
         </span>
       </div>
     </div>
