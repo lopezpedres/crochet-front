@@ -8,10 +8,10 @@ export interface SingleProduct {
   export interface ProductByHandle {
     title: string;
     description: string;
-    priceRangeV2: PriceRangeV2;
+    priceRange: PriceRange;
     images: Images;
   }
-  export interface PriceRangeV2 {
+  export interface PriceRange {
     minVariantPrice: MinVariantPrice;
   }
   export interface MinVariantPrice {

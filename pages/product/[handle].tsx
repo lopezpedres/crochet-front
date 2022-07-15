@@ -7,7 +7,6 @@ import type {
   SingleProduct,
 } from "../types/Products/SingleProduct";
 import ProductPage from "../Components/Product/ProductPage";
-//Server side rendering
 
 const gql = String.raw;
 const SingleProductQuery = gql`
@@ -15,6 +14,11 @@ const SingleProductQuery = gql`
     productByHandle(handle: $handle) {
       title
       description
+      priceRange {
+        minVariantPrice {
+          amount
+        }
+      }
       images(first: 3) {
         edges {
           node {
@@ -27,8 +31,6 @@ const SingleProductQuery = gql`
   }
 `;
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  console.log("params", params.handle);
-
   const { data }: SingleProduct = await storeFront(SingleProductQuery, {
     handle: params.handle,
   });
@@ -44,11 +46,7 @@ const ProductItem = ({
 }: {
   productByHandle: ProductByHandle;
 }) => {
-  return (
-    <div>
-      <ProductPage productByHandle={productByHandle}/>
-    </div>
-  );
+  return <ProductPage productByHandle={productByHandle} />;
 };
 
 export default ProductItem;
