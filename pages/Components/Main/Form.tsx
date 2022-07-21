@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import MyDropzone from "./DropZone";
-import { postImageProposal } from "../../utils/postImageProposal";
-import { postProposal } from "../../utils/postProposal";
+import  postImageProposal  from "../../utils/postImageProposal";
+import  postProposal  from "../../utils/postProposal";
 type Inputs = {
   name: string;
   email: string;
@@ -19,10 +19,11 @@ export default function Form() {
   } = useForm();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    reset()
     const urlImage = await postImageProposal(files[0]);
-    const newProposal = await postProposal({ ...data, url: urlImage });
+
+    const newProposal = await  postProposal({ ...data, url: urlImage });
     console.log(newProposal);
-    reset();
   };
   // console.log(watch("name")); // watch input value by passing the name of it
 
@@ -83,7 +84,7 @@ export default function Form() {
           </div>
           <label className="block cursor-pointer text-gray-700 text-sm font-bold mb-">
             Imagenes
-          <MyDropzone files={files} setFiles={setFiles} />
+            <MyDropzone files={files} setFiles={setFiles} />
           </label>
           <button
             className=" block h-10 w-32 mx-auto border-2 rounded-md shadow-xl border-gray-700 bg-secondary hover:bg-gray-800 hover:text-white"
