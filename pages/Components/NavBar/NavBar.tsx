@@ -50,9 +50,11 @@ export const NavBar = () => {
       }
       <div className='container hidden md:flex  justify-evenly items-center mx-auto'>
         <Options />
+        <Link href='/cart'>
         <a href='#'>
           <img src="/cart.svg" />
         </a>
+        </Link>
 
       </div>
     </nav>
