@@ -7,9 +7,9 @@ interface LayoutProps {
 }
 const defaultState: State = {} as State;
 const cartStateContext = createContext(defaultState);
-const cartDispatchContext = createContext({} as Dispatch<Action>);
+const cartDispatchContext = createContext((()=>{} )as Dispatch<Action>);
 
-const cartProvider = ({ children }: LayoutProps) => {
+const CartProvider = ({ children }: LayoutProps) => {
   const [state, dispatch] = useReducer(cartReducer, defaultState);
 
   return (
@@ -21,5 +21,5 @@ const cartProvider = ({ children }: LayoutProps) => {
   );
 };
 
-export default cartProvider;
+export default CartProvider;
 export { cartStateContext, cartDispatchContext };

@@ -1,5 +1,5 @@
-const gql = String.raw()
-const getCart = gql`
+const gql = String.raw
+export const getCart = gql`
 query getCart {
     cart(id: "gid://shopify/Cart/d0e5a930f77cfc01bb0ec138b9b5dfeb") {
       id

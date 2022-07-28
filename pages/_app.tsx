@@ -1,4 +1,5 @@
 import Head from "next/head";
+import CartProvider from "../store/cart/CartProvider";
 import "../styles/globals.css";
 import "../styles/styles.css";
 import Layout from "./Components/Layout/Layout";
@@ -11,7 +12,9 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Component {...pageProps} />
+        <CartProvider>
+          <Component {...pageProps} />
+        </CartProvider>
       </Layout>
     </div>
   );

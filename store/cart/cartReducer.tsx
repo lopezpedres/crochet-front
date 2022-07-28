@@ -4,7 +4,7 @@ import {
   removeFromCart,
   clearCart,
   setCartItemQuantity,
-  setCart
+  setCart,
 } from "./actions/types";
 
 const cartReducer = (state: State, action: Action): State => {
@@ -14,11 +14,11 @@ const cartReducer = (state: State, action: Action): State => {
     case removeFromCart:
       return action.payload;
     case clearCart:
-      return action.payload;
+      return {...action.payload};
     case setCartItemQuantity:
       return action.payload;
     case setCart:
-        return action.payload;
+      return action.payload;
     default:
       return state;
   }
