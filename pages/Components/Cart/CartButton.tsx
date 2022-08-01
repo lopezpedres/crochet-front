@@ -14,20 +14,21 @@ interface CartItemProps {
 }
 
 const CartButton = ({ product, dispatch }: CartItemProps) => {
-  const clickHandler = (action:string) => {
+  const handle = product.merchandise.product.handle;
+  const deleteHandler = (action:string, handle:string) => {
     dispatch({
       type: action,
-      payload:{}
+      payload: handle,
     });
   };
   return (
     <div className="flex flex-row">
       <div className="flex flex-row border border-black my-3 ">
         <button className="p-2 mx-2">-</button>
-        <div className="p-2 mx-2">1</div>
+        <div className="p-2 mx-2">{}</div>
         <button className="p-2 mx-2">+</button>
       </div>
-      <button onClick={()=>clickHandler(clearCart)}>
+      <button onClick={()=>deleteHandler(removeFromCart, handle)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"

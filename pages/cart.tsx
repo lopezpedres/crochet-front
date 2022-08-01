@@ -13,9 +13,11 @@ const cart = () => {
   const cartState = useContext(cartStateContext);
   const dispatch = useContext(cartDispatchContext);
   const cartItem = cartState.data?.cart.lines.edges;
+  const cache = (typeof window !== 'undefined')&&JSON.parse(localStorage.getItem("cart")) || "{}";
+
   useEffect(() => {
     const fetchData = async () => {
-      const response: State = await storeFront(getCart);
+      const response: State = await storeFront(getCart,cache);
       console.log(response);
       dispatch({
         type: setCart,

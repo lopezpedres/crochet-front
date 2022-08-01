@@ -12,9 +12,24 @@ const cartReducer = (state: State, action: Action): State => {
     case addToCart:
       return action.payload;
     case removeFromCart:
-      return action.payload;
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          cart: {
+            ...state.data.cart,
+            lines: {
+              ...state.data.cart.lines,
+              edges: state.data.cart.lines.edges.filter(
+                (item) =>
+                  item.node.merchandise.product.handle !== action.payload
+              ),
+            },
+          },
+        },
+      };
     case clearCart:
-      return {...action.payload};
+      return { ...action.payload };
     case setCartItemQuantity:
       return action.payload;
     case setCart:
