@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import CartItem from "./Components/Cart/CartItem";
 import { storeFront } from "./utils/storeFront";
-import { getCart } from "./utils/queries";
-import CartProvider, {
+import { getCart } from "./graphql/queries";
+import {
   cartStateContext,
   cartDispatchContext,
 } from "../store/cart/CartProvider";
@@ -12,12 +12,12 @@ import { setCart } from "../store/cart/actions/types";
 const cart = () => {
   const cartState = useContext(cartStateContext);
   const dispatch = useContext(cartDispatchContext);
-  const cartItem = cartState.data?.cart.lines.edges;
-  const cache = (typeof window !== 'undefined')&&JSON.parse(localStorage.getItem("cart")) || "{}";
+  const cartItem = cartState.data?.cart?.lines?.edges;
+  const cartId = (typeof window !== 'undefined')&&JSON.parse(localStorage.getItem("cart")) || "{}";
 
   useEffect(() => {
     const fetchData = async () => {
-      const response: State = await storeFront(getCart,cache);
+      const response: State = await storeFront(getCart,cartId);
       console.log(response);
       dispatch({
         type: setCart,
@@ -26,7 +26,7 @@ const cart = () => {
     };
     fetchData();
   }, []);
-
+  
   return (
     <div>
       <h1 className="text-center text-3xl font-bold text-gray-700 mb-4">
