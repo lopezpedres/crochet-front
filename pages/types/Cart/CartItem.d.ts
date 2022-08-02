@@ -4,6 +4,11 @@ export interface CartType {
   }
   export interface Data {
     cart: Cart;
+    userErrors: UserError[];
+  }
+  export interface UserError{
+    message: string;
+    field: string;
   }
   export interface Cart {
     id: string;
@@ -18,10 +23,12 @@ export interface CartType {
     node: Node;
   }
   export interface Node {
+    id: string;
     quantity: number;
     merchandise: Merchandise;
   }
   export interface Merchandise {
+    id: string;
     product: Product;
   }
   export interface Product {
