@@ -1,0 +1,31 @@
+mutation cartLinesUpdate($id: ID!, $lines: [CartLineUpdateInput!]!) {
+  cartLinesUpdate(cartId: $id, lines: $lines) {
+    cart {
+      id
+      lines(first: 5) {
+        edges {
+          node {
+            quantity
+            merchandise {
+              ... on ProductVariant {
+                product {
+                  handle
+                  title
+                  priceRange {
+                    maxVariantPrice {
+                      amount
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
