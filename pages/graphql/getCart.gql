@@ -17,6 +17,14 @@ query getCart($id: ID!) {
                     amount
                   }
                 }
+                images(first: 1) {
+                  edges {
+                    node {
+                      url
+                      altText
+                    }
+                  }
+                }
               }
             }
           }

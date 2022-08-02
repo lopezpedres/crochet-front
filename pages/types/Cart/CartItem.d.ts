@@ -35,6 +35,17 @@ export interface CartType {
     handle: string;
     title: string;
     priceRange: PriceRange;
+    images: Images;
+  }
+  export interface Images{
+    edges?: (EdgesEntity1)[] | null;
+  }
+  export interface EdgesEntity1 {
+    node: Node1;
+  }
+  export interface Node1 {
+    url: string;
+    altText: string;
   }
   export interface PriceRange {
     maxVariantPrice: MaxVariantPrice;

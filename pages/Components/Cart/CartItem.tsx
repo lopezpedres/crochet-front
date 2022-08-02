@@ -16,7 +16,7 @@ const CartItem = ({ product, dispatch }: CartItemProps) => {
         <img
           className=" w-full object-cover max-w-[6rem] "
           //Todo: get image from product
-          src="/images/deer.jpg"
+          src={product.merchandise.product.images.edges[0].node.url}
         />
       </div>
 

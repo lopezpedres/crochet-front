@@ -16,6 +16,14 @@ mutation cartLinesUpdate($id: ID!, $lines: [CartLineUpdateInput!]!) {
                       amount
                     }
                   }
+                  images(first: 1) {
+                    edges {
+                      node {
+                        url
+                        altText
+                      }
+                    }
+                  }
                 }
               }
             }
