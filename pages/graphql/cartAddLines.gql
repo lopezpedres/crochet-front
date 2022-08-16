@@ -1,5 +1,5 @@
-mutation MyCartLinesAdd($input: [CartLineInput!]!) {
-  cartLinesAdd(cartId: "gid://shopify/Cart/d0e5a930f77cfc01bb0ec138b9b5dfeb", lines: $input) {
+mutation cartLinesAdd($input: [CartLineInput!]!) {
+  cartLinesAdd($id: ID!, $lines: [CartLineUpdateInput!]!) {
     cart {
       id
         lines(first:2){
@@ -16,6 +16,15 @@ mutation MyCartLinesAdd($input: [CartLineInput!]!) {
                       amount
                     }
                   }
+                  images(first: 1) {
+                    edges {
+                      node {
+                        url
+                        altText
+                      }
+                    }
+                  }
+                  
                 }
               }
             }
