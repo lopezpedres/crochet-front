@@ -1,4 +1,4 @@
-mutation cartLinesUpdate($id: ID!, $lines: [CartLineUpdateInput!]!) {
+mutation  cartLinesUpdate($id: ID!, $lines: [CartLineUpdateInput!]!) {
   cartLinesUpdate(cartId: $id, lines: $lines) {
     cart {
       id
