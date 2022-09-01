@@ -6,12 +6,12 @@ import "swiper/css/grid";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper";
 
-import type { ProductByHandle } from "../../types/Products/SingleProduct";
+import type { SingleProduct } from "../../types/Products/SingleProduct";
 
 const ProductPage = ({
   productByHandle,
 }: {
-  productByHandle: ProductByHandle;
+  productByHandle: SingleProduct;
 }) => {
   console.log(productByHandle);
   return (

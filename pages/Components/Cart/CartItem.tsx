@@ -3,8 +3,8 @@ import type { Action } from "../../types/Cart/CartProvider";
 import type { Node } from "../../types/Cart/CartItem";
 import CartButton from "./CartButton";
 interface CartItemProps {
-  product: Node;
-  dispatch: Dispatch<Action>;
+  product?: Node;
+  dispatch?: Dispatch<Action>;
 }
 const CartItem = ({ product, dispatch }: CartItemProps) => {
   const title = product.merchandise.product.title;

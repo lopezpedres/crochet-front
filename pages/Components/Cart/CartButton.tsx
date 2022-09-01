@@ -6,8 +6,8 @@ import type { Node } from "../../types/Cart/CartItem";
 import { clearCart } from "../../../store/cart/actions/types";
 
 interface CartItemProps {
-  product: Node;
-  dispatch: Dispatch<Action>;
+  product?: Node;
+  dispatch?: Dispatch<Action>;
 }
 
 const CartButton = ({ product, dispatch }: CartItemProps) => {
