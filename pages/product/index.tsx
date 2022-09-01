@@ -11,15 +11,15 @@ import { GridOptions } from "swiper/types";
 
 import { storeFront } from "../utils/storeFront";
 import type { Products } from "../types/Products/Products";
-import type { allProducts } from "../Components/Product/types/ProductTypes";
 
-const index = ({products}:{products:Products}) => {
+import { products } from "../graphql/queries";
+const index = ({ products }: { products: Products }) => {
   console.log(products);
   const myGrid: GridOptions = {
     rows: 10,
     fill: "row",
   };
-  
+
   return (
     <>
       <div className="text-center text-4xl mb-4">Catálogo</div>
@@ -54,7 +54,7 @@ const index = ({products}:{products:Products}) => {
           {products.edges.map((product) => (
             <SwiperSlide key={product.node.title}>
               <ProductItem product={product.node} />
-            </SwiperSlide> 
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>
@@ -64,38 +64,10 @@ const index = ({products}:{products:Products}) => {
 
 export default index;
 
-const gql = String.raw;
-
-const query = gql`
-  query Products {
-    products(first: 30) {
-      edges {
-        node {
-          title
-          handle
-          priceRange{
-            minVariantPrice{
-              amount
-            }
-          }
-          images(first:1){
-            edges{
-              node{
-                url
-                altText
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 export const getServerSideProps: GetServerSideProps = async () => {
-  const  {data} : { data: allProducts } = await storeFront(query);
+  const { data }: { data: { products: Products } } = await storeFront(products);
   console.log(data);
-  
+
   return {
     props: {
       products: data.products,

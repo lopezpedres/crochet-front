@@ -3,16 +3,14 @@ import { GetServerSideProps } from "next";
 import { storeFront } from "../utils/storeFront";
 import { productByHandle } from "../graphql/queries";
 
-import type {
-  ProductByHandle,
-  SingleProduct,
-} from "../types/Products/SingleProduct";
+import type { SingleProduct } from "../types/Products/SingleProduct";
 import ProductPage from "../Components/Product/ProductPage";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const { data }: SingleProduct = await storeFront(productByHandle, {
-    handle: params.handle,
-  });
+  const { data }: { data: { productByHandle: SingleProduct } } =
+    await storeFront(productByHandle, {
+      handle: params.handle,
+    });
   return {
     props: {
       productByHandle: data.productByHandle,
@@ -23,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 const ProductItem = ({
   productByHandle,
 }: {
-  productByHandle: ProductByHandle;
+  productByHandle: SingleProduct;
 }) => {
   return <ProductPage productByHandle={productByHandle} />;
 };

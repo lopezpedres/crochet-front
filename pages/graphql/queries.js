@@ -5,6 +5,8 @@ import cartLinesUpdate from "./cartLinesUpdate.gql"
 export {cartLinesUpdate}
 import  productByHandle  from "./productByHandle.gql"
 export {productByHandle}
+import products from "./products.gql"
+export {products}
 
 //Need to add the variables 
 // const createCart = gql`
