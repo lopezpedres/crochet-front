@@ -12,7 +12,7 @@ import { setCart } from "../store/cart/actions/types";
 const cart = () => {
   const cartState = useContext(cartStateContext);
   const dispatch = useContext(cartDispatchContext);
-  const cartItem = cartState.data?.cart?.lines?.edges;
+  const cartItem = cartState.data?.cart?.lines?.edges || null
   const cartId = (typeof window !== 'undefined')&&JSON.parse(localStorage.getItem("cart")) || "{}";
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const cart = () => {
         Carrito
       </h1>
       <div className="border-t-2 border-b-2 m-auto">
-        {cartItem?.length !== 0 ? (
+        {cartItem?.length !== 0 && cartItem !==null ? (
           cartItem?.map((item) => (
             <CartItem key={item.node.merchandise.product.title} product={item.node} dispatch={dispatch} />
           ))
