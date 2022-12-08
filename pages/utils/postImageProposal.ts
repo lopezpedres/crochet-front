@@ -7,7 +7,7 @@ type Proposal = {
   url?: string;
 };
 //Todo: Have to add the types for the file 
-export const postImageProposal = async (file: any) => {
+const postImageProposal = async (file: any) => {
   const storage = getStorage();
   const storageRef = ref(storage, "images/"+file.name);
   if (file !== null || file !== undefined) {
@@ -22,3 +22,4 @@ export const postImageProposal = async (file: any) => {
     }
   }
 };
+export default postImageProposal;

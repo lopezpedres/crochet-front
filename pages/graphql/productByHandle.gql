@@ -1,0 +1,26 @@
+query productByHandle($handle: String!) {
+  productByHandle(handle: $handle) {
+    variants(first: 1) {
+      edges {
+        node {
+          id
+        }
+      }
+    }
+    title
+    description
+    priceRange {
+      minVariantPrice {
+        amount
+      }
+    }
+    images(first: 3) {
+      edges {
+        node {
+          url
+          altText
+        }
+      }
+    }
+  }
+}

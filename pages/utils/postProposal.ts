@@ -1,4 +1,5 @@
-import { db } from "../../pages/Firebase/firebaseConfig";
+import  {db}  from "../../pages/Firebase/firebaseConfig";
+
 import { collection, addDoc } from "firebase/firestore";
 
 type Proposal = {
@@ -8,13 +9,16 @@ type Proposal = {
   url?: string;
 };
 
-export const postProposal = async (proposal: Proposal) => {
-    console.log(proposal)
+ const postProposal = async (proposal: Proposal) => {
   try {
-    const newProposal = await addDoc(collection(db, "proposals"), proposal);
-    console.log("A new Proposal has been updated:"+newProposal.id)
+    const collectionRef = collection(db, "/proposals");
+    console.log(collectionRef);
+    const newProposal = await addDoc(collectionRef, proposal);
+    console.log("A new Proposal has been uploaded:"+newProposal.id)
     return newProposal
   } catch (e) {
     console.log(e);
   }
 };
+
+export default postProposal;

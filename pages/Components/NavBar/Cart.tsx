@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import Link from "next/link";
 
 export const Cart = () => {
   return (
-    <div className='grid grid-col-1 md:hidden justify-end '>
-        <img src="./cart.svg"/>
-    </div>
-  )
-}
+    <Link href="/cart">
+      <a>
+        <div className="grid grid-col-1 md:hidden justify-end ">
+          <img src="/cart.svg" />
+        </div>
+      </a>
+    </Link>
+  );
+};

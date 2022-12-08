@@ -1,0 +1,43 @@
+query getCart($id: ID!) {
+  cart(id: $id) {
+    buyerIdentity{
+      phone
+    }
+    id
+    lines(first: 10) {
+      edges {
+        node {
+          id
+          quantity
+          merchandise {
+            ... on ProductVariant {
+              id
+              product {
+                handle
+                title
+                priceRange {
+                  maxVariantPrice {
+                    amount
+                  }
+                }
+                images(first: 1) {
+                  edges {
+                    node {
+                      url
+                      altText
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    attributes {
+      key
+      value
+    }
+    createdAt
+  }
+}

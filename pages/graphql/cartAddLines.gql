@@ -1,0 +1,36 @@
+mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
+  cartLinesAdd(cartId: $cartId, lines: $lines) {
+    cart {
+      id
+        lines(first:10){
+        edges{
+           node{
+            quantity
+            merchandise {
+              ... on ProductVariant {
+                product{
+                  handle
+                  title
+                  priceRange{
+                    maxVariantPrice{
+                      amount
+                    }
+                  }
+                  images(first: 1) {
+                    edges {
+                      node {
+                        url
+                        altText
+                      }
+                    }
+                  }
+                  
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
