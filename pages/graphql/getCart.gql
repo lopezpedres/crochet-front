@@ -1,7 +1,10 @@
 query getCart($id: ID!) {
   cart(id: $id) {
+    buyerIdentity{
+      phone
+    }
     id
-    lines(first: 5) {
+    lines(first: 10) {
       edges {
         node {
           id

@@ -1,10 +1,26 @@
-import type {CartType} from './CartItem';
-//Aqui quiero definir State, el cual es el mismo que el response de la API de GraphQL (CartType)
-export type State = CartType;
-//Aqui me falta definir el type de las acciones
-
+import type { TypeCartLinesAdd } from "../Products/TypeCartLinesAdd";
+import type {
+  addItem,
+  removeItem,
+  setItem,
+} from "../../../store/cart/actions/types";
+enum ActionTypes {
+  addItem = "ADD_ITEM",
+  removeItem = "REMOVE_ITEM",
+  setItem = "SET_ITEM",
+  quantityItem = "QUANTITY_ITEM"
+}
+export type State = TypeCartLinesAdd;
+//Aqui me falta definir el type de los payloads
 export type Action = {
-    type: string;
-    payload: any;
+  type: ActionTypes;
+  payload?: any;
+};
+
+export enum PayloadTypes {
+  addPayload,
+  removePayload,
+  setPayload,
 }
 
+export default ActionTypes;

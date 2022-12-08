@@ -10,8 +10,11 @@
   },
   "dependencies": {
     "@types/isomorphic-fetch": "^0.0.36",
+    "@types/micromodal": "^0.3.3",
+    "browserslist": "^4.21.4",
     "firebase": "^9.9.0",
     "isomorphic-fetch": "^3.0.0",
+    "micromodal": "^0.4.10",
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0",

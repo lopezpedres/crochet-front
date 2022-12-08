@@ -1,8 +1,8 @@
-mutation cartLinesAdd($input: [CartLineInput!]!) {
-  cartLinesAdd($id: ID!, $lines: [CartLineUpdateInput!]!) {
+mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
+  cartLinesAdd(cartId: $cartId, lines: $lines) {
     cart {
       id
-        lines(first:2){
+        lines(first:10){
         edges{
            node{
             quantity
@@ -31,3 +31,6 @@ mutation cartLinesAdd($input: [CartLineInput!]!) {
           }
         }
       }
+    }
+  }
+}

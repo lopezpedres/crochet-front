@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GetServerSideProps } from "next";
 import { storeFront } from "../utils/storeFront";
 import { productByHandle } from "../graphql/queries";
+
+import {
+  cartStateContext,
+  cartDispatchContext,
+} from "../../store/cart/CartProvider";
 
 import type { SingleProduct } from "../types/Products/SingleProduct";
 import ProductPage from "../Components/Product/ProductPage";
@@ -23,7 +28,15 @@ const ProductItem = ({
 }: {
   productByHandle: SingleProduct;
 }) => {
-  return <ProductPage productByHandle={productByHandle} />;
+  const productState = useContext(cartStateContext);
+  const dispatch = useContext(cartDispatchContext);
+  return (
+    <ProductPage
+      productByHandle={productByHandle}
+      dispatch={dispatch}
+      productState={productState}
+    />
+  );
 };
 
 export default ProductItem;

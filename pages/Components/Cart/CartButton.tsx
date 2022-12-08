@@ -1,6 +1,7 @@
 import React, { Dispatch } from "react";
 import { storeFront } from "../../utils/storeFront";
 import { cartLinesUpdate } from "../../graphql/queries";
+import type {CartType} from "../../types/Cart/CartItem"
 import type { Action, State } from "../../types/Cart/CartProvider";
 import type { Node } from "../../types/Cart/CartItem";
 import { clearCart } from "../../../store/cart/actions/types";
@@ -21,10 +22,7 @@ const CartButton = ({ product, dispatch }: CartItemProps) => {
   const merchandiseId = product.merchandise.id;
 
   const removeFromCartHandler = (action: string, handle: string) => {
-    dispatch({
-      type: action,
-      payload: handle,
-    });
+//** Calls storeFront API with id of the lineID as the handle variable */
   };
 
   const setCartItemQuantityHandler = async (
@@ -32,7 +30,7 @@ const CartButton = ({ product, dispatch }: CartItemProps) => {
     nodeId: string,
     quantity: number
   ) => {
-    const updatedCart: State = await storeFront(cartLinesUpdate, {
+    const updatedCart: CartType = await storeFront(cartLinesUpdate, {
       id,
       lines: {
         merchandiseId: merchandiseId,

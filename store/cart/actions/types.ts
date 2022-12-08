@@ -3,3 +3,7 @@ export const removeFromCart = 'REMOVE_FROM_CART';
 export const clearCart = 'CLEAR_CART';
 export const setCartItemQuantity = 'SET_CART_ITEM_QUANTITY';
 export const setCart = 'SET_CART';
+export const addItem = 'ADD_ITEM'
+export const removeItem = 'REMOVE_ITEM'
+export const setItem = 'SET_ITEM'
+export const quantityItem = 'QUANTITY_ITEM'
