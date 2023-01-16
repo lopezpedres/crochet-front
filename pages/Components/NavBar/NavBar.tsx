@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import Cart from "./Cart";
+import Image from "next/image";
 
 const NavBar = () => {
   const [show, setShow] = useState(false);
@@ -11,24 +12,30 @@ const NavBar = () => {
     return (
       <>
         <Link href="/">
-          <a>Home</a>
+          <a onClick={() => toggleButton()}>Home</a>
         </Link>
         <Link href="/product">
-          <a>Catálogo</a>
+          <a onClick={() => toggleButton()}>Catálogo</a>
         </Link>
-        <a href="#">Contacto</a>
+        <a onClick={() => toggleButton()} href="#">
+          Contacto
+        </a>
       </>
     );
   };
   return (
     <nav className=" md:flex  p-4 py-11 md:px-20 ">
       <div className="md:static fixed z-10  bg-white top-0 left-0 right-0 grid grid-cols-3 p-4  ">
-        <div className="md:hidden z-10 col-span-2">
-          <button onClick={() => toggleButton()} type="button">
-            <img src="/burguer.svg" />
-          </button>
-          {/* // Here I want the enter the logo*/}
-        </div>
+        {/* <div className="md:hidden z-10 col-span-2"> */}
+        <button
+          className="md:hidden z-10 col-span-2 w-8 h-8"
+          onClick={() => toggleButton()}
+          type="button"
+        >
+          <Image src="/burguer.svg" alt="burguer" width={32} height={32} />
+        </button>
+        {/* // Here I want the enter the logo*/}
+        {/* </div> */}
         <Cart />
       </div>
 
