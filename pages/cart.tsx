@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import CartItem from "./Components/Cart/CartItem";
 import { storeFront } from "./utils/storeFront";
 import { getCart } from "./graphql/queries";
@@ -13,21 +13,20 @@ const Cart = () => {
   // const cartState = useContext(cartStateContext);
   // const dispatch = useContext(cartDispatchContext);
   // const cartItem = cartState.data?.cart?.lines?.edges || null
-  const cartItem = cartState?.data?.cart?.lines?.edges || null;
 
-  const cartId =
-    (typeof window !== "undefined" &&
-      JSON.parse(localStorage.getItem("cart"))) ||
-    "{}";
-
+  const fetchData = useCallback(async () => {
+    const cartId: string =
+      (typeof window !== "undefined" &&
+        JSON.parse(localStorage.getItem("cart"))) ||
+      "{}";
+    const response: CartType = await storeFront(getCart, cartId);
+    console.log(response);
+    setcartState(response);
+  }, []);
   useEffect(() => {
-    const fetchData = async () => {
-      const response: CartType = await storeFront(getCart, cartId);
-      console.log(response);
-      setcartState(response);
-    };
     fetchData();
-  }, [cartId]);
+  }, [fetchData]);
+  const cartItem = cartState.data.cart.lines.edges || null;
 
   return (
     <div>
@@ -35,8 +34,8 @@ const Cart = () => {
         Carrito
       </h1>
       <div className="border-t-2 border-b-2 m-auto">
-        {cartItem?.length !== 0 && cartItem !== null ? (
-          cartItem?.map((item) => (
+        {cartItem.length !== 0 && cartItem !== null ? (
+          cartItem.map((item) => (
             <CartItem
               key={item.node.merchandise.product.title}
               product={item.node}
