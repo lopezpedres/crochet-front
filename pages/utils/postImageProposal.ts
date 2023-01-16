@@ -1,4 +1,9 @@
-import { getStorage, ref, uploadBytesResumable,getDownloadURL  } from "firebase/storage";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 
 type Proposal = {
   name: string;
@@ -6,19 +11,18 @@ type Proposal = {
   comments: string;
   url?: string;
 };
-//Todo: Have to add the types for the file 
+//Todo: Have to add the types for the file
 const postImageProposal = async (file: any) => {
   const storage = getStorage();
-  const storageRef = ref(storage, "images/"+file.name);
+  const storageRef = ref(storage, "images/" + file.name);
   if (file !== null || file !== undefined) {
-    try{
-
+    try {
       const snapshot = await uploadBytesResumable(storageRef, file, file.type);
-      console.log("An image has been uploaded"+snapshot.metadata);
-      const urlImage = getDownloadURL(snapshot.ref)
-      return urlImage
-    }catch(e){
-      console.log(e)
+      console.log("An image has been uploaded" + snapshot.metadata);
+      const urlImage = getDownloadURL(snapshot.ref);
+      return urlImage;
+    } catch (e) {
+      console.log(e);
     }
   }
 };

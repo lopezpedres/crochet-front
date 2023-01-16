@@ -2,7 +2,7 @@ import fetch from "isomorphic-fetch";
 export async function storeFront(
   query: string,
   //I need a generic type for the type of the data i think
-  variables: any= {}
+  variables: any = {}
 ) {
   try {
     const response = await fetch(process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN, {
@@ -14,10 +14,9 @@ export async function storeFront(
       },
       body: JSON.stringify({ query, variables }),
     });
-    console.log(response);
 
     return response.json();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 }

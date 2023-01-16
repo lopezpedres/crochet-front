@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
-
-export const Cart = () => {
+const Cart = () => {
   return (
     <Link href="/cart">
       <a>
@@ -12,3 +11,4 @@ export const Cart = () => {
     </Link>
   );
 };
+export default Cart;
