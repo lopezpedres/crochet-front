@@ -26,7 +26,6 @@ const NavBar = () => {
   return (
     <nav className=" md:flex  p-4 py-11 md:px-20 ">
       <div className="md:static fixed z-10  bg-white top-0 left-0 right-0 grid grid-cols-3 p-4  ">
-        {/* <div className="md:hidden z-10 col-span-2"> */}
         <button
           className="md:hidden z-10 col-span-2 w-8 h-8"
           onClick={() => toggleButton()}
@@ -35,7 +34,6 @@ const NavBar = () => {
           <Image src="/burguer.svg" alt="burguer" width={32} height={32} />
         </button>
         {/* // Here I want the enter the logo*/}
-        {/* </div> */}
         <Cart />
       </div>
 
@@ -50,10 +48,10 @@ const NavBar = () => {
       )}
       <div className="container hidden md:flex  justify-evenly items-center mx-auto">
         <Options />
-        <Link href="/cart">
-          <a href="#">
-            <img src="/cart.svg" />
-          </a>
+        <Link passHref href="/cart">
+          <div>
+            <Image alt="shoppin cart" width={32} height={32} src="/cart.svg" />
+          </div>
         </Link>
       </div>
     </nav>
